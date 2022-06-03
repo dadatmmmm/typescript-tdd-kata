@@ -9,7 +9,7 @@ export default class FizzBuzzer {
         return 0;
     }
 
-    public getResult(val: number):number|string|Error {
+    public getValue(val: number):number|string {
 
         if (val<1 || val>FizzBuzzer.MAX_VALUE) {
             throw new Error('Invalid input');
@@ -28,5 +28,23 @@ export default class FizzBuzzer {
         }
 
         return "FizzBuzz";  
+    }
+
+    public createFizzArray(arraySize: number): (number|string)[]|Error {
+
+        if (arraySize > FizzBuzzer.MAX_VALUE) {
+            throw new Error('Cannot create array as size is too big. Please send another size')
+        }
+
+        const tab:(number|string)[] = new Array();
+
+        for(let i=1; i<=arraySize; i++) {
+            
+            let val;
+            val = this.getValue(i);
+            tab.push(val);
+        }
+
+        return tab;
     }
 } 
